@@ -1,0 +1,4 @@
+com/diego/automoveis/service/PersistidorDeAutomovel.class
+com/diego/automoveis/entity/Automovel.class
+com/diego/automoveis/service/JPAUtil.class
+com/diego/automoveis/controller/AutomovelBean.class
