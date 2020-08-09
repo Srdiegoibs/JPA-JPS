@@ -6,7 +6,12 @@
 package com.diego.automoveis.controller;
 
 import com.diego.automoveis.entity.Automovel;
+import com.diego.automoveis.service.JPAUtil;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.persistence.EntityManager;
+import javax.persistence.Entity;
+
 
 /**
  *
@@ -14,18 +19,25 @@ import javax.faces.bean.ManagedBean;
  */
 @ManagedBean
 public class AutomovelBean {
-    private Automovel automovel = new Automovel();
 
-    // getter e setter
-    public void salva() {
-        System.out.println("Marca: " + automovel.getMarca());
-    }
+	private Automovel automovel = new Automovel();
 
-    public Automovel getAutomovel() {
-        return automovel;
-    }
+	// getter e setter
+	public Automovel getAutomovel() {
+		return automovel;
+	}
 
-    public void setAutomovel(final Automovel automovel) {
-        this.automovel = automovel;
-    }
+	public void setAutomovel(Automovel automovel) {
+		this.automovel = automovel;
+	}
+
+	public void salva() {
+
+		EntityManager em = JPAUtil.getEntityManager();
+
+		em.persist(automovel);
+
+		em.close();
+	}
+
 }

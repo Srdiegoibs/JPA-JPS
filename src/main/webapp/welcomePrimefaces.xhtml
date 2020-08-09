@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html> 
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+					xmlns:h="http://java.sun.com/jsf/html"
+					xmlns:f="http://java.sun.com/jsf/core"
+					xmlns:ui="http://java.sun.com/jsf/facelets"
+					xmlns:p="http://primefaces.org/ui">
+		<ui:define name="title">Fabricantes</ui:define>
+	
+		<h:body>
+			<div>
+				<h:form>
+					<p:panelGrid columns="1"
+								 styleClass="ui-panelgrid-blank form-group">
+
+						<p:fieldset id="pnlBusca"  
+									legend="Filtros de busca ">
+							<p:panelGrid styleClass="md-inputfield" columns="4">
+
+								<h:panelGroup styleClass="md-inputfield">
+									<p:outputLabel for="marca" 
+												   value="Marca:" />
+									<p:inputText value="#{automovelBean.automovel.marca}"
+												 maxlength="100" id="marca"
+												 styleClass="full_size"  />
+								</h:panelGroup>
+
+								<h:panelGroup styleClass="md-inputfield">
+									<p:outputLabel for="modelo" 
+												   value="Modelo:" />
+									<p:inputText value="#{automovelBean.automovel.modelo}"
+												 maxlength="100" id="modelo"
+												 styleClass="full_size"  />
+								</h:panelGroup>
+
+								<h:panelGroup styleClass="md-inputfield">
+									<p:outputLabel for="fabricacao" 
+												   value="Ano Fabricação:" />
+									<p:inputText value="#{automovelBean.automovel.anoFabricacao}"
+												 maxlength="100" id="fabricacao"
+												 styleClass="full_size"  />
+								</h:panelGroup>
+
+								<h:panelGroup styleClass="md-inputfield">
+									<p:outputLabel for="anomodelo" 
+												   value="Ano Modelo:" />
+									<p:inputText value="#{automovelBean.automovel.anoModelo}"
+												 maxlength="100" id="anomodelo"
+												 styleClass="full_size"  />
+								</h:panelGroup>
+
+								<h:panelGroup styleClass="md-inputfield">
+									<p:outputLabel for="observacao" 
+												   value="Observações:" />
+									<p:inputTextarea value="#{automovelBean.automovel.observacoes}"
+													 maxlength="100" id="observacao"
+													 styleClass="full_size" />
+								</h:panelGroup>
+
+								<h:panelGroup>
+									<p:commandButton
+													 value="Salvar" 
+													 action="#{automovelBean.salva}"/>
+								</h:panelGroup>
+
+							</p:panelGrid>
+						</p:fieldset>
+					</p:panelGrid>
+				</h:form>
+			</div>
+			
+			
+		</h:body>
+	</ui:composition>
+</html>
+
