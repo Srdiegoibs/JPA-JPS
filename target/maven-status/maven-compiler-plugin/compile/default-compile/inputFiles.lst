@@ -1,4 +1,4 @@
-/home/diego/devDiego/JAVA/WEB/automoveis/src/main/java/com/diego/automoveis/service/PersistidorDeAutomovel.java
-/home/diego/devDiego/JAVA/WEB/automoveis/src/main/java/com/diego/automoveis/service/JPAUtil.java
-/home/diego/devDiego/JAVA/WEB/automoveis/src/main/java/com/diego/automoveis/controller/AutomovelBean.java
-/home/diego/devDiego/JAVA/WEB/automoveis/src/main/java/com/diego/automoveis/entity/Automovel.java
+/home/diego/devDiego/JAVA/WEB/JPA-JPS/src/main/java/com/diego/automoveis/service/JPAUtil.java
+/home/diego/devDiego/JAVA/WEB/JPA-JPS/src/main/java/com/diego/automoveis/controller/AutomovelBean.java
+/home/diego/devDiego/JAVA/WEB/JPA-JPS/src/main/java/com/diego/automoveis/entity/Automovel.java
+/home/diego/devDiego/JAVA/WEB/JPA-JPS/src/main/java/com/diego/automoveis/service/PersistidorDeAutomovel.java
