@@ -3,6 +3,8 @@
   <persistence-unit name="default" transaction-type="RESOURCE_LOCAL">
     <jta-data-source>java:/jdbc/automoveis</jta-data-source>
 	<class>com.diego.automoveis.entity.Automovel</class>
+	<class>com.diego.automoveis.entity.Modelo</class>
+	<class>com.diego.automoveis.entity.Marca</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/automoveis"/>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>

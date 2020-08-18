@@ -8,9 +8,13 @@ package com.diego.automoveis.entity;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -45,8 +49,9 @@ public class Automovel implements Serializable {
     @Column(name = "observacoes")
     private String observacoes;
     
-    @Column(name = "modelo")
-    private String modelo;
+    @JoinColumn(name = "modelo_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "automovel_modelo_fk"))
+	@ManyToOne(fetch = FetchType.LAZY)
+    private Modelo modelo;
 
 
     public int getId() {
@@ -97,13 +102,14 @@ public class Automovel implements Serializable {
         this.observacoes = observacoes;
     }
 
-    public String getModelo() {
-        return modelo;
-    }
+	public Modelo getModelo() {
+		return modelo;
+	}
 
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
+	public void setModelo(Modelo modelo) {
+		this.modelo = modelo;
+	}
+
 
     public String getMarca() {
         return marca;
