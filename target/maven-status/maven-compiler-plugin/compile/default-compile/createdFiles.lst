@@ -2,4 +2,5 @@ com/diego/automoveis/entity/Modelo.class
 com/diego/automoveis/entity/Marca.class
 com/diego/automoveis/entity/Automovel.class
 com/diego/automoveis/service/JPAUtil.class
+com/diego/automoveis/controller/MarcaBean.class
 com/diego/automoveis/controller/AutomovelBean.class

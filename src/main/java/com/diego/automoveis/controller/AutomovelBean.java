@@ -8,12 +8,13 @@ package com.diego.automoveis.controller;
 import com.diego.automoveis.entity.Automovel;
 import com.diego.automoveis.service.JPAUtil;
 import java.util.List;
+import javax.faces.event.ActionEvent;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.component.UIComponent;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
-import org.hibernate.Transaction;
 
 /**
  *
@@ -22,12 +23,19 @@ import org.hibernate.Transaction;
 @ManagedBean
 @ViewScoped
 public class AutomovelBean {
-	
+
 	private boolean exibe = false;
 
 	private Automovel automovel = new Automovel();
 
 	private List<Automovel> automoveis;
+
+	// Methos
+	public void listener(ActionEvent event) {
+		UIComponent source = event.getComponent();
+		System.out.println("Ação executada no componente "
+				+ source.getId());
+	}
 
 	public void salva() {
 		EntityManager em = JPAUtil.getEntityManager();
@@ -41,9 +49,9 @@ public class AutomovelBean {
 
 	public void excluir(Automovel automovel) {
 		EntityManager em = JPAUtil.getEntityManager();
-		
+
 		EntityTransaction tx = em.getTransaction();
-		
+
 		tx.begin();
 		automovel = em.merge(automovel);
 		em.remove(automovel);

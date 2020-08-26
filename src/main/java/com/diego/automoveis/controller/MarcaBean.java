@@ -11,6 +11,7 @@ import com.diego.automoveis.service.JPAUtil;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.persistence.EntityManager;
 
 /**
@@ -18,20 +19,27 @@ import javax.persistence.EntityManager;
  * Created on : Aug 17, 2020, 9:49:34 PM
  */
 @ManagedBean
+@ViewScoped
 public class MarcaBean {
-
-	private List<Marca> marcas;
+	private Marca marca = new Marca();
 	
-	@PostConstruct
-	public void carregaMarca() {
-		 EntityManager em = JPAUtil.getEntityManager();
-		 marcas = em.createQuery("SELECT m  FROM Marca m", Marca.class).getResultList();
-		 em.close();
-	}
-	
-	
-	public List<Marca> getMarcas() {
-		return marcas;
+	public String salvar() {
+		try {
+			EntityManager em = JPAUtil.getEntityManager();
+			em.persist(marca);
+			return "listar?faces-redirect=true";
+		}
+		catch(Exception e) {
+				return "falha";
+		}
 	}
 
+	public Marca getMarca() {
+		return marca;
+	}
+
+	public void setMarca(Marca marca) {
+		this.marca = marca;
+	}
+	
 }

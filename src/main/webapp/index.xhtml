@@ -14,56 +14,70 @@
     </h:head>
 
 	<h:body>
-		<p:panel id="pnl_listagem">
-			<f:facet name="header">
-				<h:outputText 
-                    styleClass="titulo-barra"
-                    value="Listagem"/>
-				<p:commandButton 
-                    id="botao_novo" 
-                    value="Cadastro"
-                    icon="ui-icon-plusthick"
-					update=":pnl_cadastro"
-                    styleClass="float-right"
-					oncomplete="cadastrar()">
+		<h:form id="form_listagem">
+			<p:panel id="pnl_listagem">
+				<f:facet name="header">
+					<h:outputText 
+						styleClass="titulo-barra"
+						value="Listagem"/>
+					<p:commandButton 
+						id="botao_novo" 
+						value="Cadastro"
+						icon="ui-icon-plusthick"
+						update=":pnl_cadastro"
+						styleClass="float-right"
+						oncomplete="cadastrar()">
 
-				</p:commandButton>
-			</f:facet>
-			<p:dataTable
-				id="datatable_auto"
-				var="auto" 
-				value="#{automovelBean.automoveis}">
-				<p:column headerText="Marca">
-					<h:outputText value="#{auto.marca}"/>
-				</p:column>
+					</p:commandButton>
+				</f:facet>
+				<p:dataTable
+					id="datatable_auto"
+					var="auto" 
+					value="#{automovelBean.automoveis}">
+					<p:column headerText="Marca">
+						<h:outputText value="#{auto.marca}"/>
+					</p:column>
 
-				<p:column headerText="Modelo">
-					<h:outputText value="#{auto.modelo}"/>
-				</p:column>
+					<p:column headerText="Modelo">
+						<h:outputText value="#{auto.modelo}"/>
+					</p:column>
 
-				<p:column headerText="Ano de Fabricação">
-					<h:outputText value="#{auto.anoFabricacao}"/>
-				</p:column>
+					<p:column headerText="Ano de Fabricação">
+						<h:outputText value="#{auto.anoFabricacao}"/>
+					</p:column>
 
-				<p:column headerText="Ano do Modelo">
-					<h:outputText value="#{auto.anoModelo}"/>
-				</p:column>
+					<p:column headerText="Ano do Modelo">
+						<h:outputText value="#{auto.anoModelo}"/>
+					</p:column>
 
-				<p:column headerText="Observações">
-					<h:outputText value="#{auto.observacoes}"/>
-				</p:column>
+					<p:column headerText="Observações">
+						<h:outputText value="#{auto.observacoes}"/>
+					</p:column>
 
-				<p:column 
-					headerText="Ações"
-					styleClass="centro">
-					<p:commandButton
-						value="Excluir" 
-						icon="ui-icon-closethick" 
-						action="#{automovelBean.excluir(auto)}"
-						update=":datatable_auto"/>
-				</p:column>
-			</p:dataTable>
-		</p:panel>
+					<p:column 
+						headerText="Ações"
+						styleClass="centro">
+						<p:commandButton 
+							id="cmbnt_acoes"
+							ajax="true"
+							type="button"
+							icon="ui-icon-info"/>
+						<p:contextMenu 
+							for="cmbnt_acoes" 
+							event="click">
+							<p:menuitem 
+								id="bnt_editar"
+								icon="ui-icon-pencil"
+								value="Editar"/>
+							<p:menuitem
+								id="bnt_excluir"
+								icon="ui-icon-trash"
+								value="Excluir"/>
+						</p:contextMenu>
+					</p:column>
+				</p:dataTable>
+			</p:panel>
+		</h:form>
 
 		<div id="div_cadastro" style="display: none !important;"> 
 			<p:panel id="pnl_cadastro">
@@ -116,11 +130,11 @@
 						<p:commandButton
 							icon="ui-icon-check"
 							value="Salvar"
+							actionListener="#{automovelBean.listener}"
 							action="#{automovelBean.salva()}"
-							update=":pnl_listagem :datatable_auto"
+							update=":form_listagem:pnl_listagem :form_listagem:datatable_auto"
 							oncomplete="sair()"
 							styleClass="botao-salvar">
-							
 						</p:commandButton>
 					</p:outputPanel>
 				</p:outputPanel>
@@ -130,12 +144,12 @@
 	<script>
 		const cadastrar = () => {
 			$('#div_cadastro').fadeIn();
-			$('#pnl_listagem').fadeOut();
+			$('#form_listagem').fadeOut();
 		};
 
 		const sair = () => {
 			$('#div_cadastro').fadeOut();
-			$('#pnl_listagem').fadeIn();
+			$('#form_listagem').fadeIn();
 		};
 	</script>
 </html>

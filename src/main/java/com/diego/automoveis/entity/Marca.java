@@ -33,7 +33,6 @@ public class Marca implements Serializable {
 	@Column(name="nome", length = 50)
 	private String nome;	
 	
-	@OneToMany(mappedBy="montadora") //LAZY por padrão
-	private List<Modelo> modelos;
+	
 	
 }

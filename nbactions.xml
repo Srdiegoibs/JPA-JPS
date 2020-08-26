@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>debug</actionName>
+            <packagings>
+                <packaging>war</packaging>
+                <packaging>ear</packaging>
+                <packaging>ejb</packaging>
+            </packagings>
+            <goals>
+                <goal>package</goal>
+            </goals>
+            <properties>
+                <Env.JAVA_HOME>/usr/lib/jvm/jdk1.8.0_181</Env.JAVA_HOME>
+                
+                
+                
+                
+            </properties>
+        </action>
+    </actions>
