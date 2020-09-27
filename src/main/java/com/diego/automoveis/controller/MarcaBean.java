@@ -13,6 +13,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 /**
  * @author diego
@@ -22,6 +23,7 @@ import javax.persistence.EntityManager;
 @ViewScoped
 public class MarcaBean {
 	private Marca marca = new Marca();
+	private List<Marca> marcas;
 	
 	public String salvar() {
 		try {
@@ -32,6 +34,19 @@ public class MarcaBean {
 		catch(Exception e) {
 				return "falha";
 		}
+	}
+
+	public List<Marca> getMarcas() {
+		EntityManager em = JPAUtil.getEntityManager();
+		Query q = em.createQuery("select m from Marca m", Marca.class);
+
+		this.marcas = q.getResultList();
+		em.close();
+		return marcas;
+	}
+
+	public void setMarcas(List<Marca> marcas) {
+		this.marcas = marcas;
 	}
 
 	public Marca getMarca() {

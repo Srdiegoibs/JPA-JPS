@@ -5,7 +5,9 @@
  */
 package com.diego.automoveis.entity;
 
+import com.diego.automoveis.validation.MaxAnoAtualMais;
 import java.io.Serializable;
+import javax.faces.convert.FacesConverter;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,6 +19,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 
 /**
  *
@@ -32,12 +35,11 @@ public class Automovel implements Serializable {
     private int id;
     
     @Column(name = "ano_fabricacao")
+	@Min(1900) @MaxAnoAtualMais(message="O Valor máximo do ano de fabricação é {0}")
     private Integer anoFabricacao;
     
-    @Column(name = "marca")
-    private String marca;
-
     @Column(name = "ano_modelo")
+	@Min(1900) @MaxAnoAtualMais(message="O Valor máximo do ano de fabricação é {0}")
     private Integer anoModelo;
     
     @Column(name = "preco")
@@ -109,13 +111,4 @@ public class Automovel implements Serializable {
 	public void setModelo(Modelo modelo) {
 		this.modelo = modelo;
 	}
-
-
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
 }

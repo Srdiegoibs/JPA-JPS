@@ -18,7 +18,7 @@ import com.diego.automoveis.service.JPAUtil;
  * @author diego
  * Created on : Aug 24, 2020, 12:27:25 PM
  */
-@FacesConverter(forClass=Automovel.class)
+@FacesConverter("entityConverter")
 public class AutmovelConverter implements Converter{
 
 	@Override

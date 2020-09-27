@@ -1,0 +1,121 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:h="http://xmlns.jcp.org/jsf/html"
+				xmlns:p="http://primefaces.org/ui"
+				xmlns:f="http://xmlns.jcp.org/jsf/core"
+				template="/WEB-INF/template.xhtml"
+				xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+				xmlns:fm="http://java.sun.com/jsf/composite/componentes">
+	<ui:define name="body">
+		<h:head>
+	<title>Edição de Automóvel</title>
+</h:head>
+		<h:body>
+			<h:form 
+				id="form_automovel"
+				prependId="false">
+				<h:messages />
+
+				Todas as mensagens: <br/>
+				<h:messages />
+
+				<hr/>
+
+				Apenas mensagens globais: <br/>
+				<h:messages globalOnly="true"/>
+
+				<hr/>
+
+				<fm:panelGrid columns="2">
+					<f:facet name="header">
+
+						Adicionar Automóvel
+					</f:facet>
+					<f:facet name="footer">
+						<h:commandButton value="Salvar"
+										 action="#{automovelBean.salva()}"/>
+					</f:facet>
+					<h:outputLabel 
+						for="idSelectMarca" 
+						value="Marca:"/>
+					<h:selectOneMenu
+						id="idSelectMarca"
+						label="marca"
+						value="#{automovelBean.marca}"
+						required="true"
+						converter="entityConverter">
+						<f:selectItem 
+							itemLabel="-- Selecione --"
+							noSelectionOption="true"/>	
+						<f:selectItems 
+							value="#{marcaBean.marcas}"
+							var="marca"
+							itemValue="#{marca}"
+							itemLabel="#{marca.nome}"/>
+						<f:ajax render="selectModelo"/>	
+					</h:selectOneMenu>
+					<h:outputLabel 
+						for="idSelectModelo" 
+						value="Modelo:"/>
+					<h:selectOneMenu
+						id="idSelectModelo"
+						label="modelo"
+						value="#{automovelBean.automovel.modelo}"
+						required="true"
+						converter="entityConverter">
+						<f:selectItem 
+							itemLabel="-- Selecione --"
+							noSelectionOption="true"/>	
+						<f:selectItems 
+							value="#{automovelBean.marca.modelos}"
+							var="modelo"
+							itemValue="#{modelo}"
+							itemLabel="#{modelo.descricao}"	/>
+					</h:selectOneMenu>				
+					<h:outputLabel 
+						for="idInputAnoFabricacao" 
+						value="Ano de Fabricação:"/>
+					<h:inputText
+						id="idInputAnoFabricacao"
+						label="anoFabricacao"
+						value="#{automovelBean.automovel.anoFabricacao}">
+						<f:validateLongRange minimum="1950" maximum="2012"/>
+					</h:inputText>
+					<h:outputLabel 
+						for="idInputAnoModelo" 
+						value="Ano do Modelo:"/>
+					<h:inputText
+						id="idInputAnoModelo"
+						label="anoModelo"
+						value="#{automovelBean.automovel.anoModelo}">
+						<f:validateLongRange minimum="1950" maximum="2013"/>
+						<h:message for="idInputAnoModelo"/>
+					</h:inputText>
+					<h:outputLabel 
+						for="idInputPreco" 
+						value="Preço:"/>
+					<h:inputText
+						id="idInputPreco"
+						label="#{msgs.label_preco}"
+						value="#{automovelBean.automovel.preco}"/>
+					<h:outputLabel 
+						for="idInputKilometragem" 
+						value="Kilometragem:"/>
+					<h:inputText
+						id="idInputKilometragem"
+						label="kilometragem"
+						value="#{automovelBean.automovel.kilometragem}"/>
+					<h:outputLabel 
+						for="idInputobservacoes" 
+						value="Observações:"/>
+					<h:inputTextarea
+						id="idInputobservacoes"
+						label="observacoes"
+						value="#{automovelBean.automovel.observacoes}"/>
+					<h:commandButton 
+						value="Salvar"
+						action="#{automovelBean.salva()}" />
+				</fm:panelGrid>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>

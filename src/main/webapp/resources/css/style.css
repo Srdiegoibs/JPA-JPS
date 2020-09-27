@@ -1,0 +1,55 @@
+/*
+
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 11, 2020, 8:29:17 PM
+    Author     : diego
+*/
+.ui-panel-titlebar {
+    color:      red !important;
+    background: #B0E0E6 !important;
+}
+
+.titulo-barra {
+	color:          #ffffff !important;
+    float:          left    !important;
+    font-size:      1.4em   !important;
+    margin-top:     7px     !important;
+    font-weight:    bold    !important;
+    vertical-align: middle  !important;
+}
+
+.centro {
+    text-align: center !important;
+}
+
+.hidden {
+	display: none !important;
+}
+
+.float-left {
+   float: left !important;
+}
+
+.float-right {
+	float: right !important; 
+}
+
+
+.botao-salvar {
+    color:         #ffffff  !important;
+    padding:       5px 10px !important;
+	background:    #1e94d2  !important;
+    border-radius: 6px      !important;
+}
+
+.botao-sair {
+    color:         #ffffff  !important;
+    padding:       5px 10px !important;
+	background:    #FF0000  !important;
+	border-color:  #FF0000  !important;
+    border-radius: 6px      !important;
+}

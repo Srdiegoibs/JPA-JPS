@@ -1,4 +1,7 @@
 com/diego/automoveis/entity/Modelo.class
+com/diego/automoveis/validation/MaxAnoAtualMais.class
+com/diego/automoveis/validation/MaxAnoAtualMaisValidator.class
+com/diego/automoveis/converter/AutmovelConverter.class
 com/diego/automoveis/entity/Marca.class
 com/diego/automoveis/entity/Automovel.class
 com/diego/automoveis/service/JPAUtil.class

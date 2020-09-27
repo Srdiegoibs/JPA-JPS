@@ -1,0 +1,18 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:cc="http://java.sun.com/jsf/composite"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core">
+	<cc:interface>
+		<cc:attribute name="id" required="true"/>
+		<cc:attribute name="label" required="true"/>
+		<cc:attribute name="value" required="true"/>
+	</cc:interface>
+
+	<cc:implementation>
+		#{cc.attrs.label}:
+		<h:inputText id="#{cc.attrs.id}" label="#{cc.attrs.label}"
+					 value="#{cc.attrs.value}" />
+		<h:message for="#{cc.attrs.id}"/>
+	</cc:implementation>
+
+</html>

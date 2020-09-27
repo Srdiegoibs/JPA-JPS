@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.diego.automoveis.entity;
 
 import java.io.Serializable;
@@ -18,21 +17,44 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
- * @author diego
- * Created on : Aug 15, 2020, 10:36:29 PM
+ * @author diego Created on : Aug 15, 2020, 10:36:29 PM
  */
 @Entity
 @SequenceGenerator(initialValue = 1, allocationSize = 1, name = "seq_marca", sequenceName = "seq_marca")
 @Table(name = "marca")
 public class Marca implements Serializable {
 
-	@Id 
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_marca")
-    private int id;
-	
-	@Column(name="nome", length = 50)
-	private String nome;	
-	
-	
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_marca")
+	private int id;
+
+	@Column(name = "nome", length = 50)
+	private String nome;
+
+	@OneToMany(mappedBy = "montadora") //LAZY por padrão
+	private List<Modelo> modelos;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public List<Modelo> getModelos() {
+		return modelos;
+	}
+
+	public void setModelos(List<Modelo> modelos) {
+		this.modelos = modelos;
+	}
 }

@@ -6,6 +6,7 @@
 package com.diego.automoveis.controller;
 
 import com.diego.automoveis.entity.Automovel;
+import com.diego.automoveis.entity.Marca;
 import com.diego.automoveis.service.JPAUtil;
 import java.util.List;
 import javax.faces.event.ActionEvent;
@@ -27,8 +28,8 @@ public class AutomovelBean {
 	private boolean exibe = false;
 
 	private Automovel automovel = new Automovel();
-
 	private List<Automovel> automoveis;
+	private Marca marca; // utilitário para buscar os modelos
 
 	// Methos
 	public void listener(ActionEvent event) {
@@ -67,6 +68,14 @@ public class AutomovelBean {
 		this.automoveis = q.getResultList();
 		em.close();
 		return automoveis;
+	}
+
+	public Marca getMarca() {
+		return marca;
+	}
+
+	public void setMarca(Marca marca) {
+		this.marca = marca;
 	}
 
 	public void setAutomoveis(List<Automovel> automoveis) {
